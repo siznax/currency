@@ -27,7 +27,7 @@ def hello_name(name: str):
 
 @app.route("/rate/<string:cur1>/<string:cur2>")
 def get_rate(cur1, cur2):
-    """returns conversion rate from cur1 to cur2"""
+    """returns conversion rate from cur1 to cur2 as JSON response"""
     res = {"cur1": cur1, "cur2": cur2}
     res.update(api_rate(cur1, cur2))
     return jsonify(res)
@@ -35,7 +35,7 @@ def get_rate(cur1, cur2):
 
 @app.route("/value/<string:cur1>/<string:cur2>/<string:val>")
 def get_value(cur1, cur2, val):
-    """returns value of cur2 in cur1 at API conversion rate"""
+    """returns value of cur1 in cur2 at API conversion rate as JSON response"""
 
     decimal.getcontext().rounding = decimal.ROUND_HALF_UP  # EURO rounding
 
@@ -57,7 +57,7 @@ def get_value(cur1, cur2, val):
 
 
 def api_rate(cur1, cur2):
-    """returns conversion rate from API as float"""
+    """returns conversion rate from API as json"""
     supported = ("usd", "gbp", "eur")
 
     cur1 = cur1.lower()
