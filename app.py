@@ -21,8 +21,8 @@ def get_rate(cur1, cur2):
     return jsonify(res)
 
 
-@app.route("/value/<string:cur1>/<string:cur2>/<string:val>")
-def get_value(cur1, cur2, val):
+@app.route("/value/<string:val>/<string:cur1>/<string:cur2>")
+def get_value(val, cur1, cur2):
     """returns value of cur1 in cur2 at API conversion rate as JSON response"""
 
     decimal.getcontext().rounding = decimal.ROUND_HALF_UP  # EURO rounding
