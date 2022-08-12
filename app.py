@@ -13,18 +13,6 @@ from flask import Flask, jsonify, abort
 app = Flask(__name__)
 
 
-@app.route("/hello")
-def hello():
-    """Simple example of an API endpoint"""
-    return jsonify({"message": "ohai"})
-
-
-@app.route("/hello/<string:name>")
-def hello_name(name: str):
-    """Simple example using an URL parameter"""
-    return jsonify({"message": f"ohai {name}"})
-
-
 @app.route("/rate/<string:cur1>/<string:cur2>")
 def get_rate(cur1, cur2):
     """returns conversion rate from cur1 to cur2 as JSON response"""
